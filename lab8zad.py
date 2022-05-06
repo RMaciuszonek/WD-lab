@@ -15,16 +15,28 @@ def lab8zad():
     #
     print(df[df['Imie'] == 'ROBERT'])
     #
-    grouped = df.groupby(['Rok'])
-    print(grouped.agg({'Liczba': ['sum']}))
+    grouped = df.groupby(['Rok']).agg({'Liczba': ['sum']})
+    print(grouped)
     #
-    grouped2 = df[(df['Rok'] > 2000) & (df['Rok'] < 2005)].groupby(['Rok']).agg({'Liczba': ['sum']})
-    print(grouped2)
+    grouped = df[(df['Rok'] > 2000) & (df['Rok'] < 2005)].groupby(['Rok']).agg({'Liczba': ['sum']})
+    print(grouped)
     #
-    grouped3 = df.groupby(['Plec']).agg({'Liczba': ['sum']})
-    print(grouped3)
+    grouped = df.groupby(['Plec']).agg({'Liczba': ['sum']})
+    print(grouped)
     #
-    print(df.loc([[0], ['Plec']]))
+    grouped = df.groupby(['Rok', 'Plec'])['Liczba'].nlargest(1)
+    print('\n========\n')
+    print(grouped)
+    #
+    grouped = df.groupby(['Imie', 'Plec'])['Liczba'].sum().nlargest(1)
+    print('\n=========\n')
+    print(grouped)
+
+
+    # zadanie 3
+    df = pd.read_csv('datasets/zamowienia.csv', header=0, sep=';', decimal='.')
+
+
 
 
 if __name__ == '__main__':
