@@ -8,6 +8,7 @@ import numpy as np
 # Zad.1. Odwzoruj wykres znajdujący się w pliku o nazwie w2.png. Odcienie kolorów mogą się różnić, jednak
 # główne barwy muszą być zachowane. Zapisz wykres w formacie png za pomocą kodu
 def z1():
+    print('zadanie 1')
     y = ['A', 'B', 'C', 'D', 'E']
     x = [35, 45, 12, 41, 40]
     c = ['lightskyblue', 'pink', 'coral', 'silver', 'darkviolet']
@@ -33,6 +34,7 @@ def z1():
 # Wykres powinien być estetyczny i podpisany. Im więcej - tym lepiej.
 # Zapisz wykres w formacie jpg za pomocą kodu
 def z2():
+    print('zadanie 2')
     excel = pd.ExcelFile('ceny2.xlsx')
     df = pd.read_excel(excel, header=0, decimal=',', sheet_name=0)
     print(type(excel))
@@ -59,6 +61,7 @@ def z2():
 # • Wykres powinien być estetyczny i podpisany. Im więcej - tym lepiej.
 # Zapisz wykres w formacie pdf za pomocą kodu.
 def z3():
+    print('zadanie 3')
     df = pd.read_csv('nieruchomosci.csv', header=None, delimiter=';', decimal=',')
     # print(df)
     df = df.T
@@ -105,6 +108,6 @@ def z3():
 
 
 if __name__ == '__main__':
-    # z1()
-    # z2()
+    z1()
+    z2()
     z3()
