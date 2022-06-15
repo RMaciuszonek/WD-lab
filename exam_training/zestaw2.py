@@ -20,7 +20,7 @@ def z1():
     x2 = [-30, -33, -39, -35, -31]
     c2 = ['violet', 'mediumturquoise', 'darkturquoise', 'saddlebrown', 'olive']
     plt.barh(y, x2, color=c2)
-    plt.savefig('wykres_zad_1.png')
+    plt.savefig('wykres_zad_1.png', format='jpg')
     plt.show()
 
 
@@ -50,7 +50,7 @@ def z2():
     plt.plot(maka['Rok'], maka['Wartość'], label='Mąka')
     plt.legend()
     plt.text(2010, 2, '136301', fontsize=16)
-    plt.savefig('wykres_zad_2')
+    plt.savefig('wykres_zad_2.jpg', format='jpg')
     plt.show()
 
 

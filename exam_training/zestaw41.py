@@ -1,5 +1,8 @@
+import math
+
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 
 
 # Zad.1. Na jednym wykresie narysuj wykresy krzywych: y = log(2x), y = −4x + 2, y = 2 cos(x) na przedziale
@@ -8,6 +11,21 @@ import pandas as pd
 # pomocą kodu.
 def z1():
     print('zadanie 1')
+    x = np.linspace(0.5,10, 1000)
+    y1 = np.log10(2*x)
+    y2 = -4*x + 2
+    y3 = 2 * np.cos(x)
+    plt.plot(x, y1, '-', color='tan', label='y = log(2x)')
+    plt.plot(x, y2, '--', color='teal', label='y = -4x + 2')
+    plt.plot(x, y3, ':', color='lawngreen', label='y = 2cos(x)')
+    plt.title('Wykres krzywych')
+    plt.xlabel('Wartości x')
+    plt.ylabel('Wartości y')
+    plt.legend()
+    plt.grid(color='r', linestyle='--', linewidth=0.3)
+    plt.savefig('wykres_funkcji_zad_1.png')
+    plt.show()
+
 
 
 # Zad.2. W jednym pliku wykonaj poniższe czynności:
@@ -21,6 +39,18 @@ def z1():
 # Zapisz wykres w formacie jpg za pomocą kodu.
 def z2():
     print('zadanie 2')
+    excel = pd.ExcelFile('ceny41.xlsx')
+    df = pd.read_excel(excel, header=0)
+    print(df)
+    # tmp = df.groupby("Roodzaje towarów i usług").add({'Wartosc': ['sum']})
+    # print(tmp)
+    df.groupby(['Miesiące', 'Rodzaje towarów i usług']).size().unstack().plot(kind='bar', stacked=False)
+    # df.plot(kind='bar', x=0, y=3, legend=True)
+    plt.legend(loc='best')
+    plt.title('Ceny produktów w 2017 roku')
+    plt.xlabel('Miesiące')
+    plt.ylabel('Wartosc')
+    plt.show()
 
 
 # Zad.3. W jednym pliku wykonaj poniższe czynności:
@@ -31,9 +61,12 @@ def z2():
 # Zapisz wykres w formacie png za pomocą kodu.
 def z3():
     print('zadanie 3')
+    df = pd.read_csv('cechy41.csv', delimiter=';', decimal=',')
+    print(df)
+
 
 
 if __name__ == '__main__':
     z1()
-    z2()
+    # z2()
     z3()
